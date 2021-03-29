@@ -1,13 +1,13 @@
 site_name: Bosagora
 nav:
   - Boascan Docs: index.md
-  - Blocks:
+  - Blocks::
       - Get Blocks - GET /getmaxlatestblocks: getBlocks.md
       - Get Block Summary - GET /getblocksummary: getBlockSummary.md
-  - Transactions:
+  - Transactions::
       - Get Transactions - GET /getmaxlatesttransactions: getTransactions.md
       - Get Transaction Summary - GET /getaddresssummary: getTransactionSummary.md
-  - Address:
+  - Address::
       - Get Address Summary - GET /getaddresssummary: getAddressSummary.md
 
 theme:
