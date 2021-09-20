@@ -358,7 +358,8 @@ export class LedgerStorage extends Storages {
      */
     public putBlocks(block: Block): Promise<void> {
         const genesis_timestamp: number = this.genesis_timestamp;
-
+        console.log("height="+block.header.height.toString());
+        console.log("Transaction="+block.txs);
         function saveBlock(
             storage: LedgerStorage,
             block: Block,
@@ -1605,7 +1606,7 @@ export class LedgerStorage extends Storages {
         }
 
         function save_utxo(
-            storage: LedgerStorage,
+            storage: LedgerStorage,                       // explore utxo
             melting: boolean,
             height: Height,
             tx: Transaction,

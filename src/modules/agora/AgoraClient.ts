@@ -66,7 +66,7 @@ export class AgoraClient implements FullNodeAPI {
     }
 
     /**
-     * Request an Agora node's current block height.
+     * Request an Agora node's current block height.                             
      */
     public getBlockHeight(): Promise<Height> {
         return this.client.get(URI("/block_height").toString()).then((res) => {

@@ -128,7 +128,7 @@ class Stoa extends WebService {
         this.databaseConfig = databaseConfig;
         this.coinMarketService = coinMarketService;
         // Instantiate a dummy promise for chaining
-        this.pending = new Promise<void>(function (resolve, reject): void {
+        this.pending = new Promise<void>( (resolve, reject): void => {
             resolve();
         });
         // Do this last, as it is possible it will fail, and we only want failure
@@ -195,11 +195,14 @@ class Stoa extends WebService {
         this.app.get("/block_height", isBlackList, this.getBlockHeight.bind(this));
         this.app.get("/block_height_at/:time", isBlackList, this.getBlockHeightAt.bind(this));
         this.app.get("/validators", isBlackList, this.getValidators.bind(this));
+
         this.app.get("/validator/:address", isBlackList, this.getValidator.bind(this));
         this.app.get("/transaction/pending/:hash", isBlackList, this.getTransactionPending.bind(this));
         this.app.get("/transaction/:hash", isBlackList, this.getTransaction.bind(this));
         this.app.get("/utxo/:address", isBlackList, this.getUTXO.bind(this));
+
         this.app.post("/utxos", isBlackList, this.getUTXOs.bind(this));
+
         this.app.get("/transaction/status/:hash", isBlackList, this.getTransactionStatus.bind(this));
         this.app.get("/transaction/fees/:tx_size", isBlackList, this.getTransactionFees.bind(this));
         this.app.get(
@@ -213,11 +216,13 @@ class Stoa extends WebService {
             isBlackList,
             this.getWalletTransactionsPending.bind(this)
         );
+
         this.app.get("/wallet/balance/:address", isBlackList, this.getWalletBalance.bind(this));
         this.app.get("/wallet/utxo/:address", isBlackList, this.getWalletUTXO.bind(this));
         this.app.get("/wallet/blocks/header", isBlackList, this.getWalletBlocksHeader.bind(this));
         this.app.get("/latest-blocks", isBlackList, this.getLatestBlocks.bind(this));
         this.app.get("/latest-transactions", isBlackList, this.getLatestTransactions.bind(this));
+
         this.app.get("/block-summary", isBlackList, this.getBlockSummary.bind(this));
         this.app.get("/block-enrollments", isBlackList, this.getBlockEnrollments.bind(this));
         this.app.get("/block-transactions", isBlackList, this.getBlockTransactions.bind(this));
@@ -997,7 +1002,7 @@ class Stoa extends WebService {
      * Called when a request is received through the `/block-enrollments` handler
      * The parameter `height` is the height and `hash` is the hash of block
      *
-     *@returns enrolled validators of block.
+     * @returns enrolled validators of block.
      */
     private async getBlockEnrollments(req: express.Request, res: express.Response) {
         let field: string;
@@ -1353,6 +1358,7 @@ class Stoa extends WebService {
      * JSON transaction data is parsed and stored on each storage.
      */
     private putTransaction(req: express.Request, res: express.Response) {
+        console.log("tx=");
         if (req.body.tx === undefined) {
             res.status(400).send({
                 statusMessage: "Missing 'tx' object in body",
@@ -1366,6 +1372,7 @@ class Stoa extends WebService {
 
         res.status(200).send();
     }
+
 
     /**
      * GET /wallet/transactions/pending/:address
