@@ -288,11 +288,6 @@ export interface IBlockEnrollment {
     enroll_sig: string;
 
     /**
-     * Cycle length
-     */
-    cycle_length: number;
-
-    /**
      * total number of records
      */
     full_count: number;
@@ -1051,8 +1046,8 @@ export interface IEmitTransaction {
 }
 
 /**
-* The interface of average Fee
-*/
+ * The interface of average Fee
+ */
 export interface IAvgFee {
     /**
      * Height of Block
