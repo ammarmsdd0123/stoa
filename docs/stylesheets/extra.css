@@ -2,6 +2,9 @@
 .md-footer {
   background-color: #004d9a;
 }
+.md-footer-meta {
+  display: none
+}
 .md-sidebar {
   padding: 0;
   width: 50%;
