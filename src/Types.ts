@@ -551,6 +551,12 @@ export enum DisplayTxType {
     Payload = 3,
 }
 
+export enum BallotAnswer {
+    yes = 0,
+    no = 1,
+    blank = 2,
+    reject = 9,
+}
 /**
  * Class that converts various enum values into strings
  */
@@ -558,6 +564,7 @@ export class ConvertTypes {
     static tx_types: string[] = ["payment", "freeze"];
     static proposal_types: string[] = ["system", "fund"];
     static display_tx_type: string[] = ["inbound", "outbound", "freeze", "payload"];
+    static display_ballotAnswer: string[] = ["YES", "NO", "BLANK", "REJECT"];
 
     public static DisplayTxTypeToString(type: OutputType): string {
         if (type < ConvertTypes.display_tx_type.length) return ConvertTypes.display_tx_type[type];
@@ -572,6 +579,11 @@ export class ConvertTypes {
     public static toDisplayTxType(type: string): DisplayTxType {
         return ConvertTypes.display_tx_type.findIndex((m) => m === type.trim().toLowerCase());
     }
+
+    public static ballotAddressToString(type: number): string {
+        return BallotAnswer[type];
+    }
+
     public static ProposalTypetoString(type: ProposalType): string {
         if (type < ConvertTypes.proposal_types.length) return ConvertTypes.proposal_types[type];
         else return "";
@@ -1132,6 +1144,46 @@ export interface IPendingProposal {
     proposal_fee_tx_hash: Hash;
     proposer_address: string;
     proposal_fee_address: string;
+}
+
+/**
+ * The Interface for a Proposal's Voting Details
+ */
+export interface IVotingDetails {
+    /**
+     * The voter utxo key 
+     */
+    voter_utxo_key: string;
+
+    /**
+     * The voter address 
+     */
+    address: string;
+
+    /**
+     * The ballot sequence 
+     */
+    sequence: number;
+
+    /**
+     * The transaction hash 
+     */
+    hash: Hash;
+
+    /**
+     * The ballot answer 
+     */
+    ballot_answer: string;
+
+    /**
+     * The voting time 
+     */
+    voting_time: number;
+
+    /**
+     * The count of records 
+     */
+    full_count: number;
 }
 
 /**

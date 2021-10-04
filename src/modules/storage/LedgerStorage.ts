@@ -1602,9 +1602,9 @@ export class LedgerStorage extends Storages {
 
                     unlock_height_query = `(
                             SELECT '${JSBI.add(
-                                height.value,
-                                JSBI.BigInt(2016)
-                            ).toString()}' AS unlock_height WHERE EXISTS
+                        height.value,
+                        JSBI.BigInt(2016)
+                    ).toString()}' AS unlock_height WHERE EXISTS
                             (
                                 SELECT
                                     *
@@ -4017,6 +4017,32 @@ export class LedgerStorage extends Storages {
             WHERE data_collection_status = ?
             `;
         return this.query(sql, [DataCollectionStatus.PENDING]);
+    }
+
+    /**
+     * Get proposal's voting details
+     * @returns returns the Promise with requested data
+     * and if an error occurs the .catch is called with an error.
+     */
+    public getVotingDetails(proposal_id: string, limit: number, page: number): Promise<any[]> {
+        const sql = `
+            SELECT
+	            T1.voter_address,
+                T1.sequence,
+                T1.tx_hash,
+                T1.ballot_answer,
+                T1.voting_time,
+                T2.utxo_key,
+                count(*) OVER() as full_count
+            FROM
+                ballots T1
+                INNER JOIN tx_outputs T2
+                ON (T1.tx_hash = T2.tx_hash)
+
+            WHERE T1.proposal_id = ?
+            LIMIT ? OFFSET ? `;
+
+        return this.query(sql, [proposal_id, limit, limit * (page - 1)]);
     }
 
     /**
