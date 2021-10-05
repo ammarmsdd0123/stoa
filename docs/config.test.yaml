@@ -21,7 +21,7 @@ database:
    host : 127.0.0.1
    user : root
    database : devstoa
-   password : ""
+   password : "12345678"
    port : 3306
    waitForConnections : true
    connectionLimit : 10
