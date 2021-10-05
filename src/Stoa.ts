@@ -54,7 +54,7 @@ import {
     ValidatorData,
     IPendingProposal,
     IProposalAPI,
-    IProposalList
+    IProposalList,
     IVotingDetails,
 } from "./Types";
 
