@@ -1,12 +1,29 @@
-###### Endpoint
+<h6>Endpoint</h6>
 
-    https://boascan.io/latest-transactions
+<p id="endpoint"></p>
 
 HTTP Method: **GET**
 <br/>
 <br/>
-     Returns Latest transactions of the ledger.
-
+Returns Latest transactions of the ledger.
+<br/>
+<button class="md-button" onclick="tryNow()">Try Now</button>
+<script>
+   document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/latest-transactions`
+    function tryNow(){
+        document.getElementById("showResult").innerHTML =""
+        document.getElementById("endpoint").innerHTML =""
+        fetch(`http://3.38.34.30:3836/latest-transactions`).then((res) => {
+            res.json().then((res) => {
+                document.getElementById("showResult").innerHTML = JSON.stringify(res)
+                document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/latest-transactions`
+                })
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+</script>
+<p id="showResult"></p>
 | Parameter | Explanation  | Example                              |
 | --------- | ------------ | ------------------------------------ |
 

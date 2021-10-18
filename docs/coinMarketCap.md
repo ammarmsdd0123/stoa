@@ -1,11 +1,27 @@
-###### Endpoint
+<h6>Endpoint</h6>
 
-    https://boascan.io/coinmarketcap
-
+<p id="endpoint"></p>
 HTTP Method: **GET**
 
 Returns Coin market cap.
-</br>
+<br/>
+<button class="md-button" onclick="tryNow()">Try Now</button>
+<script>
+   document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/coinmarketcap`
+    function tryNow(){
+        document.getElementById("showResult").innerHTML =""
+        document.getElementById("endpoint").innerHTML =""
+        fetch(`http://3.38.34.30:3836/coinmarketcap`).then((res) => {
+            res.json().then((res) => {
+                document.getElementById("showResult").innerHTML = JSON.stringify(res)
+                document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/coinmarketcap`
+                })
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+</script>
+<p id="showResult"></p>
 | Query String | Explanation    | Example                            |
 
 

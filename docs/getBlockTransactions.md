@@ -1,17 +1,34 @@
-###### Endpoint
+<h6>Endpoint</h6>
 
-    https://boascan.io/block-transactions?page=1&limit=10&height=0
+<p id="endpoint"></p>
 
 HTTP Method: **GET**
-
-@returns Returns transactions of block.
+Returns transactions of block.
+<input class="md-input" placeholder="Enter Page" id="page" width="100"></input><br/>
+<input class="md-input" placeholder="Enter Limit" id="limit"></input><br/>
+<input class="md-input" placeholder="Enter Height" id="height"></input><br/><br/>
+<button class="md-button" onclick="tryNow()">Try Now</button>
+<script>
+   document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/block-transactions?page=${document.getElementById("page").value || "1"}&limit=${document.getElementById("limit").value || "10"}&height=${document.getElementById("height").value || "0"}`
+    function tryNow(){
+        document.getElementById("showResult").innerHTML =""
+        document.getElementById("endpoint").innerHTML =""
+        fetch(`http://3.38.34.30:3836/block-transactions?page=${document.getElementById("page").value || "1"}&limit=${document.getElementById("limit").value || "10"}&height=${document.getElementById("height").value || "0"}`).then((res) => {
+            res.json().then((res) => {
+                document.getElementById("showResult").innerHTML = JSON.stringify(res[0])
+                document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/holder_balance_history?page=${document.getElementById("page").value || "1"}&limit=${document.getElementById("limit").value || "10"}&height=${document.getElementById("height").value || "0"}`
+                })
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+</script>
+<p id="showResult"></p>
 
 | Query String | Explanation    | Example                            |
 | ------------ | -------------- | ---------------------------------- |
 | page      | page number | 1 |
-| ------------ | -------------- | ---------------------------------- |
 | limit      | Number of records at a time | 10 |
-| ------------ | -------------- | ---------------------------------- |
 | height      | block Height | 0 |
 
 Example Response JSON:<br/>

@@ -354,7 +354,13 @@
 
     <!-- Custom JavaScript -->
     {% for path in config["extra_javascript"] %}
-    <script src="{{ path | url }}"></script>
+    <script src="{{ path | url }}">
+
+      function tryNowListener() {
+        console.log("hello");   // The function returns the product of p1 and p2
+      }
+
+    </script>
     {% endfor %}
     {% endblock %}
   </body>

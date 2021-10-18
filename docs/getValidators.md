@@ -1,15 +1,32 @@
-###### Endpoint
+<h6>Endpoint</h6>
 
-    https://boascan.io/validators?page=1&limit=1
+<p id="endpoint"></p>
 
 HTTP Method: **GET**
 
 Returns a set of Validators based on the block height if there is a height. If height was not provided the latest validator set is returned.
-
+<input class="md-input" placeholder="Enter Page" id="page" width="100"></input><br/>
+<input class="md-input" placeholder="Enter Limit" id="limit"></input><br/><br/>
+<button class="md-button" onclick="tryNow()">Try Now</button>
+<script>
+   document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/validators?page=${document.getElementById("page").value || "1"}&limit=${document.getElementById("limit").value || "1"}`
+    function tryNow(){
+        document.getElementById("showResult").innerHTML =""
+        document.getElementById("endpoint").innerHTML =""
+        fetch(`http://3.38.34.30:3836/validators?page=${document.getElementById("page").value || "1"}&limit=${document.getElementById("limit").value || "1"}`).then((res) => {
+            res.json().then((res) => {
+                document.getElementById("showResult").innerHTML = JSON.stringify(res[0])
+                document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/validators?page=${document.getElementById("page").value || "1"}&limit=${document.getElementById("limit").value || "1"}`
+                })
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+</script>
+<p id="showResult"></p>
 | Query String | Explanation    | Example                            |
 | ------------ | ---------------- | -------------------------------------------- |
 | page  | Page Number | 1 |
-| ------------ | ---------------- | -------------------------------------------- |
 | limit  | limit of Records | 1 |
 
 Example Response JSON:<br/>

@@ -11,7 +11,9 @@ nav:
       
   - Validators::
       - Get Validators - GET /validators: getValidators.md 
-      - Get Validators - GET /validators/:address: getValidatorAddress.md 
+      - Get Validators - GET /validators/:address: getValidatorAddress.md
+      - Get validator ballots - GET /validator/ballot/:address : validatorBallot.md 
+      - Get validator uptime - GET /validator/uptime/:address : validator_uptime.md 
 
   - Wallet::
       - Get Wallet Transaction History - GET /wallet/transactions/history/:address: walletTransactionHistory.md 
@@ -47,6 +49,11 @@ nav:
   - UTXO::
       - Get utxo  - GET /utxo/:address : getUTXO.md 
 
+  - Proposals::
+      - Get proposal list  - GET /proposals : getProposals.md 
+      - Get proposal by proposal_id  - GET /proposals/proposal_id : getProposalsByID.md 
+      - Get proposal voting Details - GET /voting_details/proposal_id: getVotingDetails.md 
+
 theme:
   name: material
   custom_dir: docs/overrides/
@@ -57,3 +64,7 @@ extra_css:
 
 extra_javascript:
   - javascripts/extra.js
+
+markdown_extensions:
+  - attr_list
+

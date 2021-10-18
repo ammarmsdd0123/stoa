@@ -15,6 +15,7 @@
 .md-sidebar:nth-child(2) {
   display: none !important;
 }
+
 .md-nav__item {
   color: #677185;
 }
@@ -88,4 +89,15 @@ th:last-child {
 }
 td {
   word-break: break-word;
+}
+#endpoint {
+  margin: 0 0 1rem;
+}
+.md-input {
+  border: 1px solid #ddd;
+  margin: 1rem 0 0;
+  width: 100%;
+}
+#showResult {
+  margin: 1rem 0 0;
 }

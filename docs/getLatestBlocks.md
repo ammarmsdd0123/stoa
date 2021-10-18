@@ -1,15 +1,31 @@
-###### Endpoint
-
-    https://boascan.io//latest-blocks?page=0&pageSize=6
+<h6>Endpoint</h6>
+<p id="endpoint"></p>
 
 HTTP Method: **GET**
 
-@returns Returns Latest blocks of the ledger.
-
+Returns Latest blocks of the ledger.
+<input class="md-input" placeholder="Enter Page" id="page" width="100"></input><br/>
+<input class="md-input" placeholder="Enter pageSize" id="pageSize"></input><br/><br/>
+<button class="md-button" onclick="tryNow()">Try Now</button>
+<script>
+   document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/latest-blocks?page=${document.getElementById("page").value || "0"}&pageSize=${document.getElementById("pageSize").value || "6"}`
+    function tryNow(){
+        document.getElementById("showResult").innerHTML =""
+        document.getElementById("endpoint").innerHTML =""
+        fetch(`http://3.38.34.30:3836/latest-blocks?page=${document.getElementById("page").value || "0"}&pageSize=${document.getElementById("pageSize").value || "6"}`).then((res) => {
+            res.json().then((res) => {
+                document.getElementById("showResult").innerHTML = JSON.stringify(res[0])
+                document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/latest-blocks?page=${document.getElementById("page").value || "0"}&pageSize=${document.getElementById("pageSize").value || "6"}`
+                })
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+</script>
+<p id="showResult"></p><br/>
 | Query String | Explanation    | Example                            |
-| ------------ | -------------- | ---------------------------------- |
+| --------- | ------------ | ------------------------------------ |
 | page      | page number | 1 |
-| ------------ | -------------- | ---------------------------------- |
 | page size      | Number of records in a page | 6 |
 
 
