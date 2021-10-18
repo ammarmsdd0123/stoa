@@ -3,8 +3,7 @@
 <p id="endpoint"></p>
 
 HTTP Method: **GET**
-Returns average transaction fee between range (date - filter)
-<br/>
+Returns holder transaction history<br/>
 <input class="md-input" placeholder="Enter Address" id="address" width="100"></input><br/>
 <input class="md-input" placeholder="Enter Filter" id="filter"></input><br/>
 <input class="md-input" placeholder="Enter date" id="date"></input><br/><br/>

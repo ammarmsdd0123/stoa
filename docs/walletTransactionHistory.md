@@ -16,7 +16,7 @@ Returns a set of transactions history of the addresses.
         document.getElementById("endpoint").innerHTML =""
         fetch(`http://3.38.34.30:3836/wallet/transactions/history/${document.getElementById("address").value || "boa1xzgenes5cf8xel37fz79gzs49v56znllk7jw7qscjwl5p6a9zxk8zaygm67"}`).then((res) => {
             res.json().then((res) => {
-                document.getElementById("showResult").innerHTML = JSON.stringify(res[0])
+                document.getElementById("showResult").innerHTML = JSON.stringify(res)
                 document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/wallet/transactions/history/${document.getElementById("address").value || "boa1xzgenes5cf8xel37fz79gzs49v56znllk7jw7qscjwl5p6a9zxk8zaygm67"}`
                 })
         }).catch((err) => {

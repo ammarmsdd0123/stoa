@@ -4,19 +4,23 @@
 HTTP Method: **GET**
 
  Returns list of proposal voting details
-<input class="md-input" placeholder="Enter proposal id" id="proposalId" width="100"></input><br/>
-<input class="md-input" placeholder="Enter page" id="page"></input><br/>
-<input class="md-input" placeholder="Enter pageSize" id="pageSize"></input><br/><br/>
+<input class="md-input" placeholder="Enter proposal id" id="proposalId" width="100"></input><br/><br/>
+<!-- <input class="md-input" placeholder="Enter page" id="page"></input><br/>
+<input class="md-input" placeholder="Enter pageSize" id="pageSize"></input><br/><br/> -->
 <button class="md-button" onclick="tryNow()">Try Now</button>
 <script>
-   document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/proposal/voting_details/${document.getElementById("proposalId").value || "469008972006"}/?page=${document.getElementById("page").value || "1"}&pageSize=${document.getElementById("pageSize").value || "6"}`
+   document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/proposal/voting_details/${document.getElementById("proposalId").value || "469008972006"}`
+//    /?page=${document.getElementById("page").value || "1"}&pageSize=${document.getElementById("pageSize").value || "6"}`
     function tryNow(){
         document.getElementById("showResult").innerHTML =""
         document.getElementById("endpoint").innerHTML =""
-        fetch(`http://3.38.34.30:3836/proposal/voting_details/${document.getElementById("proposalId").value || "469008972006"}/?page=${document.getElementById("page").value || "1"}&pageSize=${document.getElementById("pageSize").value || "6"}`).then((res) => {
+        fetch(`http://3.38.34.30:3836/proposal/voting_details/${document.getElementById("proposalId").value || "469008972006"}`)
+        // /?page=${document.getElementById("page").value || "1"}&pageSize=${document.getElementById("pageSize").value || "6"}`)
+        .then((res) => {
             res.json().then((res) => {
                 document.getElementById("showResult").innerHTML = JSON.stringify(res)
-                document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/voting_details/${document.getElementById("proposalId").value || "469008972006"}/?page=${document.getElementById("page").value || "1"}&pageSize=${document.getElementById("pageSize").value || "6"}`
+                document.getElementById("endpoint").innerHTML =`http://3.38.34.30:3836/voting_details/${document.getElementById("proposalId").value || "469008972006"}`
+                // /?page=${document.getElementById("page").value || "1"}&pageSize=${document.getElementById("pageSize").value || "6"}`
                 })
         }).catch((err) => {
             console.log(err)

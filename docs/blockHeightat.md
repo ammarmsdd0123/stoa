@@ -3,7 +3,7 @@
 
 HTTP Method: **GET**
 
-Return the block height corresponding to to the block creation time
+Return the block height corresponding to the block creation time
 <input class="md-input" placeholder="Enter Time" id="time" width="100"></input><br/><br/>
 <button class="md-button" onclick="tryNow()">Try Now</button>
 

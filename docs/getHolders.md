@@ -3,7 +3,6 @@
 <p id="endpoint"></p>
 
 HTTP Method: **GET**
-returns Returns BOA Holders of the ledger.
 <br/>
 Returns Latest transactions of the ledger.
 <br/>

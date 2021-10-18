@@ -13,7 +13,6 @@ nav:
       - Get Validators - GET /validators: getValidators.md 
       - Get Validators - GET /validators/:address: getValidatorAddress.md
       - Get validator ballots - GET /validator/ballot/:address : validatorBallot.md 
-      - Get validator uptime - GET /validator/uptime/:address : validator_uptime.md 
 
   - Wallet::
       - Get Wallet Transaction History - GET /wallet/transactions/history/:address: walletTransactionHistory.md 

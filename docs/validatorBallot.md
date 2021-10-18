@@ -2,8 +2,7 @@
 
 <p id="endpoint"></p>
 HTTP Method: **GET**
-
-Returns BOA Holder of the ledger.
+Returns Ballot of the validator
 <input class="md-input" placeholder="Enter Address" id="address" width="100"></input><br/><br/>
 <button class="md-button" onclick="tryNow()">Try Now</button>
 <script>
